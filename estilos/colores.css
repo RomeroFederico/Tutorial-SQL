@@ -1,0 +1,16 @@
+.colorComando {
+	color: #88c999;
+}
+
+.colorComentario {
+	color: #999;
+}
+
+.colorTitulo {
+	color: blueviolet;
+}
+
+.colorImportante {
+	color:  goldenrod;
+	font-weight: bolder;
+}

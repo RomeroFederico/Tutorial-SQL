@@ -1,0 +1,60 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.centrar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.miFuente {
+	font-family: monospace;
+	font-weight: 500;
+	font-size: 15px;
+	color: white;
+}
+
+.vertical {
+	flex-direction: column;
+}
+
+.tabla {
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.fila {
+	justify-content: space-between;
+	width: 400px;
+	text-align: right;
+}
+
+#divContenedorPrincipal {
+	min-height: 100vh;
+
+	background-color: #e5e5f7;
+	background-image:  linear-gradient(rgba(0,0,0,0.3) 1.2000000000000002px, transparent 1.2000000000000002px), linear-gradient(to right, rgba(0,0,0,0.3) 1.2000000000000002px, #e5e5f7 1.2000000000000002px);
+	background-size: 24px 24px;
+}
+
+#divBody {
+	width: 70%;
+	min-height: 100vh;
+
+	margin: 20px;
+
+	padding: 20px;
+
+	background-color: #1d2a35;
+
+	border: double 10px white;
+
+	border-radius: 5px;
+}
+
+.dosTablas {
+	justify-content: space-between;
+	align-items: flex-start;
+}
