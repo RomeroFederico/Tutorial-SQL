@@ -32,6 +32,7 @@
 				<h3 class = "btn" id = "btn_as">AS</h3>
 				<h3 class = "btn" id = "btn_join">JOIN</h3>
 				<h3 class = "btn" id = "btn_union">UNION</h3>
+				<h3 class = "btn" id = "btn_group_by">GROUP BY</h3>
 			</div>
 
 			<div id = "divBody" class =  "">
@@ -382,8 +383,15 @@
 				<b class = "colorComando">SELECT </b><b class = "colorString">'tabla 2'</b> <b class = "colorComando">AS</b> TIPO, column_name_a, column_name_b<br>
 				<b class = "colorComando">FROM</b> table_name2<br>
 				<b class = "colorComando">WHERE</b> condicion<br>
-				<b class = "colorComando">ORDER BY</b> column_name1;<br>
-				
+				<b class = "colorComando">ORDER BY</b> column_name1;
+				<br><br>
+				<hr>
+				<br>
+				<b class = "colorImportante indice" id = "info_group_by">GROUP BY:</b><i> Agrupa filas que tienen el mismo valor. Es usado en conjunto con las directivas COUNT(), MAX(), MIN(), SUM() y AVG() para agrupar valores.</i><br>
+				<br>
+				<b class = "colorComando">SELECT COUNT</b>(column_name1), column_name2<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">GROUP BY</b> column_name2;<b class = "colorComentario"> # Por cada valor de 'column_name2', cuento las filas que coincidan su valor y agrupo.</b>
 
 
 
