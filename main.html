@@ -7,6 +7,8 @@
 		<link rel = "stylesheet" type = "text/css" href = "./estilos/style.css">
 		<link rel = "stylesheet" type = "text/css" href = "./estilos/colores.css">
 
+		<script type = "module" src = "./main.js"></script>
+
 		<title>Tutorial HTML</title>
 	</head>
 	<body>
@@ -33,6 +35,9 @@
 				<h3 class = "btn" id = "btn_join">JOIN</h3>
 				<h3 class = "btn" id = "btn_union">UNION</h3>
 				<h3 class = "btn" id = "btn_group_by">GROUP BY</h3>
+				<h3 class = "btn" id = "btn_having">HAVING</h3>
+				<h3 class = "btn" id = "btn_exists">EXISTS</h3>
+				<h3 class = "btn" id = "btn_any-all">ANY-ALL</h3>
 			</div>
 
 			<div id = "divBody" class =  "">
@@ -392,9 +397,46 @@
 				<b class = "colorComando">SELECT COUNT</b>(column_name1), column_name2<br>
 				<b class = "colorComando">FROM</b> table_name<br>
 				<b class = "colorComando">GROUP BY</b> column_name2;<b class = "colorComentario"> # Por cada valor de 'column_name2', cuento las filas que coincidan su valor y agrupo.</b>
-
-
-
+				<br><br>
+				<hr>
+				<br>
+				<b class = "colorImportante indice" id = "info_having">HAVING:</b><i> Reemplaza a 'WHERE' cuando se desea utilizarlo en las funciones AVG, COUNT, MAX, MIN y SUM, ya que no se permite utilizar esta clausula.</i><br>
+				<br>
+				<b class = "colorComando">SELECT COUNT</b>(column_name1), column_name2<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">GROUP BY</b> column_name2<br>
+				<b class = "colorComando">HAVING COUNT</b>(column_name1) > 5<b class = "colorComentario"> # Solo muestro los grupos que cumplan la condicion, en este caso, que el valor sea mayor a 5.</b><br>
+				<b class = "colorComando">ORDER BY COUNT</b>(column_name1);
+				<br><br>
+				<hr>
+				<br>
+				<b class = "colorImportante indice" id = "info_exists">EXISTS:</b><i> Permite comprobar la existencia de cualquier registro en una consulta. Retorna 'TRUE' en caso de que exista al menos un registro en la consulta.</i><br>
+				<br>
+				<b class = "colorComando">SELECT </b> column_name<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">WHERE EXISTS</b><b class = "colorComentario"> # Si la segunda consulta devuelve algun valor, 'EXIST' retornara 'TRUE' y permitira ejecutar la primer consulta. Esto se hara por cada registro de la primer consulta.</b><br>
+				(<b class = "colorComando">SELECT </b> column_name<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">WHERE </b>condition);
+				<br><br>
+				<hr>
+				<br>
+				<b class = "colorImportante indice" id = "info_any-all">ANY:</b><i> Retornara verdadero si al menos un registro de la subconsulta cumple la condicion.</i><br>
+				<b class = "colorImportante">ALL:</b><i> Retornara verdadero si todos los registros de la subconsulta cumplen la condicion.</i><br>
+				<br>
+				<b class = "colorComando">SELECT </b> column_name<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">WHERE</b> column_name operator <b class = "colorComando">ANY</b><br>
+				(<b class = "colorComando">SELECT </b> column_name<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">WHERE </b>condition);
+				<br><br>
+				<b class = "colorComando">SELECT </b> column_name<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">WHERE</b> column_name operator <b class = "colorComando">ALL</b><br>
+				(<b class = "colorComando">SELECT </b> column_name<br>
+				<b class = "colorComando">FROM</b> table_name<br>
+				<b class = "colorComando">WHERE </b>condition);
 
 
 				</div>
@@ -404,58 +446,4 @@
 		</div>
 
 	</body>
-
-	<script type="text/javascript">
-
-		var seleccion = "";
-		var array_infos = undefined;
-
-		function inicializar_botones() {
-			var botones = obtener_botones();
-
-			for (var i = 0; i < botones.length; i++) {
-				botones[i].addEventListener("click", seleccionar_del_menu);
-			}
-		}
-
-		function obtener_botones() {
-			var botones = document.getElementsByTagName("h3");
-			return botones;
-		}
-
-		function clear_botones() {
-
-			var botones = obtener_botones();
-
-			for (var i = 0; i < botones.length; i++) {
-				botones[i].classList.remove("iluminar");
-			}
-		}
-
-		function obtener_info() {
-			if (array_infos === undefined)
-				array_infos = document.getElementsByClassName("indice");
-			return array_infos;
-		}
-
-		function mostrar(id) {
-			var info = document.getElementById(id);
-			info.scrollIntoView();
-		}
-		
-		function seleccionar_del_menu(event) {
-			var id = event.currentTarget.id;
-			var boton = document.getElementById(id);
-			var seleccion = id.replace("btn", "info");
-
-			clear_botones();
-
-			boton.classList.add("iluminar");
-
-			mostrar(seleccion);
-		}
-
-		inicializar_botones();
-
-	</script>
 </html>
